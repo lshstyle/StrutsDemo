@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<include file="user.xml" />
+	<include file="ognl.xml" />
+	<include file="tags.xml" />
+	<include file="theme.xml" />
+	<include file="login.xml" />
+	<include file="test.xml" />
+	<include file="convert.xml" />
+	<constant name="struts.devMode" value="true" />
+	<!--<constant name="struts.custom.i18n.resources" value="login" />-->
+    <constant name="struts.ognl.allowStaticMethodAccess" value="true" />
+    <!-- <constant name="struts.ui.theme" value="mytheme" /> -->
+	<package name="default" namespace="/" extends="struts-default">
+	    <default-action-ref name="hello" />
+	    
+	    <global-results> 	
+	    	<result name="mainpage">/hello.jsp</result>
+	    </global-results>
+		<action name="hello">
+			<result>/hello.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="token"></interceptor-ref>
+		</action>
+		
+		<action name="dispatcher">
+			<result type="dispatcher">/user/add.jsp</result>
+		</action>
+		
+		<action name="redirect">
+			<result type="redirect">/user/update.jsp</result>
+		</action>
+		
+		<action name="chain">
+			<result type="chain">dispatcher</result>
+		</action>
+	</package>
+
+</struts>

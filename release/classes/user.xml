@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="user" namespace="/user" extends="struts-default">
+		<action name="add" class="com.struts.demo.action.UserAction">
+			<result>/user/add.jsp</result>
+		</action>
+		<action name="update" class="com.struts.demo.action.UserAction">
+			<result>/user/update.jsp</result>
+		</action>
+	</package>
+
+	<package name="user1" namespace="/user1" extends="struts-default">
+		<action name="User*" class="com.struts.demo.action.UserAction"
+			method="{1}">
+			<result>/user/{1}.jsp</result>
+		</action>
+	</package>
+
+	<package name="user2" namespace="/user2" extends="struts-default">
+		<action name="user2" class="com.struts.demo.action.User2Action"
+			method="add">
+			<result>${r}</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="user2" class="com.struts.demo.action.User2Action"
+			method="getObj">
+			<result>/user/request_session_application.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+	</package>
+
+	<package name="user3" namespace="/user3" extends="struts-default">
+		<action name="user3" class="com.struts.demo.action.User3Action"
+			method="add">
+			<result>/user/add.jsp</result>
+		</action>
+	</package>
+
+	<package name="user4" namespace="/user4" extends="struts-default">
+		<action name="user4" class="com.struts.demo.action.User4Action"
+			method="add">
+			<result>/user/add.jsp</result>
+		</action>
+	</package>
+</struts>
